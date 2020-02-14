@@ -1,4 +1,9 @@
 """
+requirement:
+1. within the 2D array, 0 means outdated, 1 means updated
+2. each day will update the cell directly adjacent, that is top, down, left and right
+3. return how many days are required to update all the cells in the grid
+
 I misunderstand the question by not paying attention during the online test
 The below should be the functional, but time complexity not yet optimized
 """
@@ -23,7 +28,7 @@ def grid_update_alog(row, col, grid):
                   tmp_seeds.append((i, j))
         return tmp_seeds
 
-    def get_adject_cells_index_from_seeds(seeds_to_check):
+    def get_adjacent_cells_index_from_seeds(seeds_to_check):
         dedup_cells = set()
         for i, j in seeds_to_check:
             # work on for corner first
@@ -63,7 +68,7 @@ def grid_update_alog(row, col, grid):
         return sorted(list(dedup_cells), key=lambda tup: (tup[0], tup[1]))
 
     def update_grid_with_seeds(grid_to_check, seeds_to_check):
-        cells_to_update = get_adject_cells_index_from_seeds(seeds_to_check)
+        cells_to_update = get_adjacent_cells_index_from_seeds(seeds_to_check)
         print(f'cells_to_update {cells_to_update}')
         for i, j in cells_to_update:
             grid_to_check[i][j] = 1
