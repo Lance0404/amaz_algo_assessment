@@ -81,8 +81,6 @@ def grid_update_alog(row, col, grid):
         update_grid_with_seeds(grid, seeds)
         print(f'grid: {grid}')
 
-        # if min_day > 3:
-        #     break
     return min_day
 
 
